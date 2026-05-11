@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ID Card Generator YLT 2026</title>
+    <title>ID Generator YLT 2026 - Presisi 300 DPI</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,218 +12,112 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
 
     <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
+        
+        .container { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 30px; 
+            max-width: 1100px; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
             justify-content: center;
-            padding: 20px;
-        }
-
-        /* .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            max-width: 1100px;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        } */
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            max-width: 1100px;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            /* Tambahkan ini agar logo bisa memenuhi baris atas */
-            justify-content: center;
-        }
-
-        .form-section {
-            flex: 1;
-            min-width: 350px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-            font-size: 14px;
-        }
-
-        input[type="text"],
-        input[type="file"],
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            box-sizing: border-box;
-        }
-
-        #crop-area {
-            display: none;
-            margin-top: 15px;
-            border: 2px dashed #ccc;
-            padding: 10px;
-            background: #fafafa;
-        }
-
-        .btn {
-            padding: 12px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            width: 100%;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn-crop {
-            background: #27ae60;
-            color: white;
-            margin-top: 10px;
-        }
-
-        .btn-download {
-            background: #8b0000;
-            color: white;
-            font-size: 16px;
-            margin-top: 20px;
-        }
-
-        /* --- PREVIEW KARTU --- */
-        #card-to-export {
-            width: 350px;
-            height: 560px;
-            position: relative;
-            /* MEMANGGIL TEMPLATE OTOMATIS */
-            background-image: url('template.jpg');
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-
-        /* .photo-container {
-            position: absolute;
-            width: 176px;
-            height: 245px;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        } */
-
-        .photo-container {
-            position: absolute;
-            width: 176px;
-            height: 245px;
-            top: 20px;
-            left: 87px;
-            /* Ini adalah posisi tengah manual (350px - 176px / 2) */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        #output-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none;
-        }
-
-        /* Area Teks */
-        .text-overlay {
-            position: absolute;
-            width: 100%;
-            top: 312px;
-            pointer-events: none;
-            color: white;
-        }
-
-        #output-name {
-            width: 100%;
-            text-align: center;
-            font-size: 18px;
-            font-weight: 900;
-            text-transform: uppercase;
-            padding: 0 20px;
-            box-sizing: border-box;
-            margin-bottom: 24px;
-        }
-
-        .social-container {
-            margin-left: 78px;
-            font-size: 13px;
-            font-weight: 800;
-        }
-
-        .social-row {
-            height: 33px;
-            display: flex;
-            align-items: center;
         }
 
         .header-logo {
             flex-basis: 100%;
-            /* Memaksa logo mengambil satu baris penuh di atas */
+            text-align: center;
             border-bottom: 2px solid #f0f2f5;
             padding-bottom: 20px;
+            margin-bottom: 20px;
         }
+
+        .header-logo img { max-width: 300px; height: auto; }
+
+        .form-section { flex: 1; min-width: 350px; }
+        .form-group { margin-bottom: 15px; }
+        
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; font-size: 14px; }
+        
+        input[type="text"], input[type="file"] { 
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 14px;
+        }
+
+        small { display: block; margin-top: 5px; font-size: 12px; color: #666; }
+
+        #crop-area { display: none; margin-top: 15px; border: 2px dashed #8b0000; padding: 10px; background: #fffcfc; border-radius: 8px; }
+        
+        .btn { padding: 12px; border: none; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; transition: 0.3s; }
+        .btn-crop { background: #27ae60; color: white; margin-top: 10px; }
+        .btn-crop:hover { background: #219150; }
+        
+        .btn-download { background: #8b0000; color: white; font-size: 16px; margin-top: 10px; }
+        .btn-download:hover { background: #a50000; }
+
+        /* Preview ID Card */
+        #card-to-export { 
+            width: 350px; height: 560px; position: relative; 
+            background-image: url('template.jpg'); background-size: 100% 100%; 
+            border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); 
+        }
+
+        .photo-container { 
+            position: absolute; width: 176px; height: 245px; top: 20px; left: 87px; 
+            display: flex; justify-content: center; align-items: center; overflow: hidden; 
+        }
+        
+        #output-photo { width: 100%; height: 100%; object-fit: cover; display: none; }
+
+        .text-overlay { position: absolute; width: 100%; top: 312px; color: white; text-align: center; }
+        #output-name { font-size: 18px; font-weight: 900; text-transform: uppercase; padding: 0 20px; margin-bottom: 24px; }
+        
+        .social-container { margin-left: 78px; font-size: 13px; font-weight: 800; text-align: left; }
+        .social-row { height: 33px; display: flex; align-items: center; }
+
+        footer { width: 100%; text-align: center; padding: 30px; color: #666; font-size: 14px; }
     </style>
 </head>
 
 <body>
 
     <div class="container">
-        <div class="header-logo" style="width: 100%; text-align: center; margin-bottom: 20px;">
-            <img src="logo_lanscape.png" alt="Logo YLT" style="max-width: 300px; height: auto;">
+        <div class="header-logo">
+            <img src="logo ylt Landscape.jpg" alt="Logo YLT">
         </div>
+
         <div class="form-section">
-            <h2 style="margin-top:0; color: #8b0000;">YLT 2026 ID Generator</h2>
-
-            <div class="form-group">
-                <label>1. Pilih Foto Profil:</label>
-                <input type="file" id="input-photo-file" accept="image/*">
-                <div id="crop-area">
-                    <div id="croppie-container"></div>
-                    <button class="btn btn-crop" id="btn-crop-done">Potong & Pasang Foto</button>
+            <h2 style="margin-top:0; color: #8b0000;">ID Card Generator</h2>
+            
+            <form id="id-card-form">
+                <div class="form-group">
+                    <label>1. Foto Profil (Wajib di-crop):</label>
+                    <input type="file" id="input-photo-file" accept="image/*" required>
+                    <div id="crop-area">
+                        <div id="croppie-container"></div>
+                        <button type="button" class="btn btn-crop" id="btn-crop-done">PASANG FOTO</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label>2. Nama Lengkap:</label>
-                <input type="text" id="input-name" placeholder="KOMANG WIWEKA PREMANA" required>
-                <small id="name-count" style="color: #666;">0 / 23 Karakter</small>
-            </div>
+                <div class="form-group">
+                    <label>2. Nama Lengkap (Maks. 23 Karakter):</label>
+                    <input type="text" id="input-name" maxlength="23" placeholder="KOMANG WIWEKA PREMANA" required>
+                    <small id="name-count">0 / 23 Karakter</small>
+                </div>
 
-            <div class="form-group">
-                <label>3. Data Sosial Media:</label>
-                <input type="text" id="in-fb" placeholder="Username Facebook" style="margin-bottom:5px" required>
-                <input type="text" id="in-ig" placeholder="Username Instagram" required style="margin-bottom:5px">
-                <input type="text" id="in-yt" placeholder="Username Youtube" required style="margin-bottom:5px">
-                <input type="text" id="in-tt" placeholder="Username TikTok" required>
-            </div>
+                <div class="form-group">
+                    <label>3. Username Sosial Media (Wajib):</label>
+                    <input type="text" id="in-fb" placeholder="Facebook" required style="margin-bottom:8px">
+                    <input type="text" id="in-ig" placeholder="Instagram" required style="margin-bottom:8px">
+                    <input type="text" id="in-yt" placeholder="Youtube" required style="margin-bottom:8px">
+                    <input type="text" id="in-tt" placeholder="TikTok" required>
+                </div>
 
-            <button class="btn btn-download" onclick="downloadCard()">
-                <i class="fa-solid fa-download"></i> DOWNLOAD HASIL KARTU
-            </button>
+                <button type="submit" class="btn btn-download">
+                    <i class="fa-solid fa-download"></i> DOWNLOAD PNG (300 DPI)
+                </button>
+            </form>
         </div>
 
         <div class="preview-section">
@@ -231,10 +125,8 @@
                 <div class="photo-container">
                     <img id="output-photo" src="">
                 </div>
-
                 <div class="text-overlay">
                     <div id="output-name">NAMA LENGKAP</div>
-
                     <div class="social-container">
                         <div class="social-row" id="out-fb">fb_username</div>
                         <div class="social-row" id="out-ig">ig_username</div>
@@ -244,83 +136,44 @@
                 </div>
             </div>
         </div>
-        <footer style="width: 100%; text-align: center; padding: 20px; color: #666; font-size: 14px;">
-            <p>&copy; 2026 IT TEAM. All Rights Reserved. <br>
-                <span style="font-size: 12px;">Youth Leadership Training - Nothing Is Impossible</span>
-            </p>
-        </footer>
     </div>
 
+    <footer>
+        <p>&copy; 2026 YLT Organizer. All Rights Reserved. <br> 
+        <span style="font-size: 12px; opacity: 0.8;">Youth Leadership Training - Nothing Is Impossible</span></p>
+    </footer>
+
     <script>
-        // Sinkronisasi Teks
+        // --- 1. Sinkronisasi Input ---
         const fields = [
-            { in: 'input-name', out: 'output-name', def: 'NAMA LENGKAP' },
-            { in: 'in-fb', out: 'out-fb', def: 'fb_username' },
-            { in: 'in-ig', out: 'out-ig', def: 'ig_username' },
-            { in: 'in-yt', out: 'out-yt', def: 'yt_username' },
-            { in: 'in-tt', out: 'out-tt', def: 'tt_username' }
+            { in: 'input-name', out: 'output-name' },
+            { in: 'in-fb', out: 'out-fb' },
+            { in: 'in-ig', out: 'out-ig' },
+            { in: 'in-yt', out: 'out-yt' },
+            { in: 'in-tt', out: 'out-tt' }
         ];
 
         fields.forEach(f => {
             document.getElementById(f.in).addEventListener('input', (e) => {
-                document.getElementById(f.out).innerText = e.target.value.toUpperCase() || f.def;
+                let value = e.target.value.toUpperCase();
+                document.getElementById(f.out).innerText = value || e.target.placeholder;
+                
+                if(f.in === 'input-name') {
+                    const counter = document.getElementById('name-count');
+                    counter.innerText = `${value.length} / 23 Karakter`;
+                    counter.style.color = value.length >= 23 ? 'red' : '#666';
+                }
             });
         });
 
-        // Logika Croppie
+        // --- 2. Logika Potong Foto (Croppie) ---
         let basicCrop = new Croppie(document.getElementById('croppie-container'), {
             viewport: { width: 176, height: 245, type: 'square' },
-            boundary: { width: 300, height: 350 },
+            boundary: { width: 280, height: 320 },
             showZoomer: true
         });
 
-        document.getElementById('input-name').addEventListener('input', function (e) {
-            let val = e.target.value.toUpperCase();
-
-            if (val.length > 23) {
-                val = val.substring(0, 23);
-            }
-
-            e.target.value = val;
-
-            const el = document.getElementById('output-name');
-            el.innerText = val || 'TULIS NAMA';
-
-            adjustFontSize();
-        });
-
-        // Listener untuk menghitung karakter nama secara real-time
-        document.getElementById('input-name').addEventListener('input', function () {
-            const length = this.value.length;
-            const counter = document.getElementById('name-count');
-            counter.innerText = `${length} / 23 Karakter`;
-
-            // Beri warna merah jika sudah mencapai batas
-            if (length >= 23) {
-                counter.style.color = 'red';
-                counter.style.fontWeight = 'bold';
-            } else {
-                counter.style.color = '#666';
-                counter.style.fontWeight = 'normal';
-            }
-        });
-
-        // Ganti logika tombol download agar mengecek validasi form
-        document.getElementById('id-card-form').addEventListener('submit', function (e) {
-            e.preventDefault(); // Mencegah reload halaman
-
-            // Cek apakah foto sudah dipasang
-            const photoSrc = document.getElementById('output-photo').src;
-            if (!photoSrc || photoSrc === window.location.href) {
-                alert("Silakan potong dan pasang foto profil terlebih dahulu!");
-                return;
-            }
-
-            // Jika semua valid, jalankan fungsi download
-            downloadCard();
-        });
-
-        document.getElementById('input-photo-file').addEventListener('change', function (e) {
+        document.getElementById('input-photo-file').addEventListener('change', function(e) {
             const reader = new FileReader();
             reader.onload = (ev) => {
                 document.getElementById('crop-area').style.display = 'block';
@@ -329,21 +182,8 @@
             reader.readAsDataURL(e.target.files[0]);
         });
 
-        // document.getElementById('btn-crop-done').addEventListener('click', function () {
-        //     basicCrop.result({ type: 'base64', size: 'viewport', format: 'png' }).then(function (img) {
-        //         document.getElementById('crop-area').style.display = 'none';
-        //         document.getElementById('output-photo').src = img;
-        //         document.getElementById('output-photo').style.display = 'block';
-        //     });
-        // });
-        document.getElementById('btn-crop-done').addEventListener('click', function () {
-            // Ubah size menjadi 'original' atau angka pixel tinggi agar tidak pecah
-            basicCrop.result({
-                type: 'base64',
-                size: { width: 1200, height: 1670 }, // Resolusi tinggi (rasio 176:245)
-                format: 'png',
-                quality: 1 // Kualitas tertinggi (0-1)
-            }).then(function (img) {
+        document.getElementById('btn-crop-done').addEventListener('click', function() {
+            basicCrop.result({ type: 'base64', size: { width: 800, height: 1114 }, format: 'png', quality: 1 }).then(function(img) {
                 document.getElementById('crop-area').style.display = 'none';
                 const photoEl = document.getElementById('output-photo');
                 photoEl.src = img;
@@ -351,108 +191,67 @@
             });
         });
 
-        // Download
-        // function downloadCard() {
-        //     const card = document.getElementById('card-to-export');
-        //     html2canvas(card, { scale: 3, useCORS: true }).then(canvas => {
-        //         const link = document.createElement('a');
-        //         link.download = 'ID-CARD-' + (document.getElementById('input-name').value || 'USER') + '.png';
-        //         link.href = canvas.toDataURL('image/png');
-        //         link.click();
-        //     });
-        // }
+        // --- 3. Logika Download 300 DPI Presisi ---
+        document.getElementById('id-card-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const photoSrc = document.getElementById('output-photo').src;
+            if (!photoSrc || photoSrc === window.location.href) {
+                alert("Silakan potong dan pasang foto profil terlebih dahulu!");
+                return;
+            }
+            processDownload();
+        });
 
-        // function downloadCard() {
-        //     const card = document.getElementById('card-to-export');
-        //     const scrollPos = window.scrollY;
-        //     window.scrollTo(0, 0);
-
-        //     html2canvas(card, {
-        //         scale: 1, // Gunakan scale 4 untuk hasil sangat tajam (HD)
-        //         useCORS: true,
-        //         backgroundColor: null,
-        //         width: 350,
-        //         height: 560
-        //     }).then(canvas => {
-        //         const link = document.createElement('a');
-        //         link.download = 'ID-CARD-' + (document.getElementById('input-name').value || 'USER') + '.png';
-        //         link.href = canvas.toDataURL('image/png', 1.0); // 1.0 = Kualitas 100%
-        //         link.click();
-        //         window.scrollTo(0, scrollPos);
-        //     });
-        // }
-        async function downloadCard() {
+        async function processDownload() {
             const card = document.getElementById('card-to-export');
-            const nameInput = document.getElementById('input-name').value || 'USER';
             const scrollPos = window.scrollY;
             window.scrollTo(0, 0);
 
             try {
                 const canvas = await html2canvas(card, {
-                    scale: 4,
+                    scale: 4, 
                     useCORS: true,
                     backgroundColor: null,
                     width: 350,
-                    height: 557
+                    height: 560
                 });
 
-                // 1. Resize ke 650x1028
+                // Resize ke 650x1028 (300 DPI standar ATM)
                 const finalCanvas = document.createElement('canvas');
                 finalCanvas.width = 650;
                 finalCanvas.height = 1028;
                 const ctx = finalCanvas.getContext('2d');
                 ctx.drawImage(canvas, 0, 0, finalCanvas.width, finalCanvas.height);
 
-                // 2. Ambil data asli
                 const base64Image = finalCanvas.toDataURL('image/png');
-
-                // 3. Suntik DPI (300) dengan metode Blobs yang aman
                 const blob = await create300DpiBlob(base64Image);
 
-                // 4. Proses Download
                 const link = document.createElement('a');
-                link.download = `ID-CARD-300DPI-${nameInput}.png`;
+                link.download = `ID-CARD-${document.getElementById('input-name').value}.png`;
                 link.href = URL.createObjectURL(blob);
                 link.click();
-
             } catch (err) {
-                console.error("Error generating card:", err);
-                alert("Terjadi kesalahan saat membuat gambar.");
+                console.error(err);
+                alert("Gagal mendownload gambar.");
             } finally {
                 window.scrollTo(0, scrollPos);
             }
         }
 
-        // Fungsi pembentuk file PNG dengan Metadata 300 DPI yang Valid
         async function create300DpiBlob(base64Str) {
             const res = await fetch(base64Str);
             const blob = await res.blob();
             const arrayBuffer = await blob.arrayBuffer();
             const uint8Array = new Uint8Array(arrayBuffer);
 
-            // Definisikan chunk pHYs untuk 300 DPI (11811 pixels per meter)
-            // Struktur: Length (4 bytes), Tag (4 bytes), Data (9 bytes), CRC (4 bytes)
+            // Chunk pHYs Valid untuk 300 DPI (11811 pixels per meter)
             const physChunk = new Uint8Array([
-                0, 0, 0, 9,             // Length: 9 bytes
-                112, 72, 89, 115,       // Tag: pHYs
-                0, 0, 46, 35,           // X: 11811 ppm (300 DPI)
-                0, 0, 46, 35,           // Y: 11811 ppm
-                1,                      // Unit: meters
-                73, 123, 27, 232        // CRC Checksum untuk data di atas
+                0, 0, 0, 9, 112, 72, 89, 115, 0, 0, 46, 35, 0, 0, 46, 35, 1, 73, 123, 27, 232
             ]);
 
-            const newChunks = [];
-            // Header PNG + IHDR (biasanya 33 byte pertama)
-            newChunks.push(uint8Array.slice(0, 33));
-            // Masukkan chunk pHYs
-            newChunks.push(physChunk);
-            // Masukkan sisa data gambar
-            newChunks.push(uint8Array.slice(33));
-
-            return new Blob(newChunks, { type: 'image/png' });
+            const chunks = [uint8Array.slice(0, 33), physChunk, uint8Array.slice(33)];
+            return new Blob(chunks, { type: 'image/png' });
         }
     </script>
-
 </body>
-
 </html>
